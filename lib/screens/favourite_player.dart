@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_club/widgets/fab_app_bar.dart';
 
 class FavouritePlayer extends StatefulWidget {
   const FavouritePlayer({Key? key}) : super(key: key);
@@ -71,7 +72,8 @@ class _FavouritePlayerState extends State<FavouritePlayer> {
                         BoxShadow(
                           color: Colors.black.withOpacity(0.95),
                           blurRadius: 26,
-                          offset: const Offset(0, 2), // changes position of shadow
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
                         ),
                       ],
                     ),
@@ -208,7 +210,9 @@ class _FavouritePlayerState extends State<FavouritePlayer> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "home");
+                  },
                   child: Container(
                     height: 45,
                     width: MediaQuery.of(context).size.width / 2 - 20,

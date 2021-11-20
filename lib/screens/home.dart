@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_club/widgets/fab_app_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,6 +10,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int? _currentIndex = 0;
+
+  final List<Widget> _children = <Widget>[
+    // SignUp(),
+    // Login(),
+    // SkipperOne(),
+    // StepperOne(),
+  ];
+
+  void _selectedTab(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -580,6 +596,37 @@ class _HomeState extends State<Home> {
               ),
             ],
           ),
+        ),
+      ),
+      //bottom navigation
+      extendBody: true,
+      bottomNavigationBar: FabBottomAppBar(
+        centerItemText: '',
+        color: Colors.black,
+        backgroundColor: Colors.white,
+        selectedColor: Color(0xFF04764E),
+        notchedShape: CircularNotchedRectangle(),
+        onTabSelected: _selectedTab,
+        items: [
+          FabBottomAppBarItem(iconData: Icons.home_outlined, text: 'News'),
+          FabBottomAppBarItem(
+              iconData: Icons.calendar_today_outlined, text: 'Features'),
+          FabBottomAppBarItem(iconData: Icons.house_outlined, text: 'Shop'),
+          FabBottomAppBarItem(
+              iconData: Icons.airplane_ticket_outlined, text: 'Tickets'),
+        ],
+      ),
+      //floating action button
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, "next_match_details");
+        },
+        backgroundColor: Colors.white,
+        child: Image.asset(
+          "t2.png",
+          height: 35,
+          width: 29,
         ),
       ),
     );
